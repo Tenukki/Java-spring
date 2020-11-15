@@ -5,13 +5,13 @@
         <title>profile</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-       
+
     </head>
     <body>
-        
+
         <nav class="navbar fixed-top navbar-expand navbar-light bg-warning">
-           
-            
+
+
             <div class="collapse navbar-collapse" >
                 <ul class="nav navbar-nav mr-auto">
 
@@ -21,7 +21,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/connect">New Connection</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Logout</a>
                     </li>
@@ -31,30 +31,30 @@
                 </ul>             
             </div>
         </nav>
-        
-        
-  
-        
-        
-      
+
+
+
+
+
+
         <div class="text-center" th:if="${account.content != null}">
             <img th:src="@{/files/{id}(id=${account.id})}" class="rounded-circle" style="width: 400px;height: 400px; padding-top: 100px;"/>
         </div>
 
         <div class="text-center">
-        <h1 th:text="${account.profilename}">testi</h1>
-        <h4 th:text="${account.realname}">testi</h4>
+            <h1 th:text="${account.profilename}">testi</h1>
+            <h4 th:text="${account.realname}">testi</h4>
         </div>
-        
+
         <div class="text-center" th:if="${account.content == null && own == true}">
-        <form th:action="@{/files}" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file" />
-            <input class="btn btn-success" type="submit" value="add picture!"/>
-        </form>
+            <form th:action="@{/files}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" />
+                <input class="btn btn-success" type="submit" value="add picture!"/>
+            </form>
         </div>
-        
+
         <div class="text-center" th:if="${account.content != null && own == true}">
-             <form th:action="@{/files/replace}" method="POST" enctype="multipart/form-data">
+            <form th:action="@{/files/replace}" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <input class="btn btn-primary" type="submit" value="Replace photo"/>
             </form>
@@ -62,90 +62,90 @@
                 <input class="btn btn-danger" type="submit" value="Delete photo"/>
             </form>
         </div>
-        
+
         <div class="text-center">
-        <table  class="table table-bordered">
-            <thead>
-            <tr>
-              <th>Connections</th>
-            </tr>
-          </thead>
-            <tbody>
-                
-            <div th:each="con : ${connect}" th:if="${own == true}">            
-                <div th:if="${con.status == false}">
+            <table  class="table table-bordered">
+                <thead>
                     <tr>
-                        <td>
-                            <a th:text="${con.sender.profilename}" th:href="@{/profile/{name}(name=${con.sender.profilename})}">Nimi</a>
-
-                            <form method="POST" th:action="@{'/accound/connect/accept/' + ${con.sender.profilename}}">
-                            <input type="submit"  value="add connection"/>
-                            </form>
-
-                            <form method="POST" th:action="@{'/accound/connect/decline/' + ${con.sender.profilename}}">
-                            <input type="submit"  value="decline connection"/>
-                            </form>
-
-                        </td>
+                        <th>Connections</th>
                     </tr>
-                </div>
-            </div>
-                
-        <div class="text-center"  th:each="con : ${friends}" >
-            <tr>
-                <td>
-            <a th:text="${con.profilename}" th:href="@{/profile/{name}(name=${con.profilename})}">Nimi</a>
-                <form method="POST" th:action="@{'/accound/connect/delete/'+${con.profilename}}" th:if="${own == true}">
-                <input type="submit"  value="delete!"/>
-                </form>
-            </td>
-            </tr>
-        </div> 
-        </tbody>
-        </table>
-        
+                </thead>
+                <tbody>
+
+                    <div th:each="con : ${connect}" th:if="${own == true}">            
+                        <div th:if="${con.status == false}">
+                            <tr>
+                                <td>
+                                    <a th:text="${con.sender.profilename}" th:href="@{/profile/{name}(name=${con.sender.profilename})}">Nimi</a>
+
+                                    <form method="POST" th:action="@{'/accound/connect/accept/' + ${con.sender.profilename}}">
+                                        <input type="submit"  value="add connection"/>
+                                    </form>
+
+                                    <form method="POST" th:action="@{'/accound/connect/decline/' + ${con.sender.profilename}}">
+                                        <input type="submit"  value="decline connection"/>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        </div>
+                    </div>
+
+                    <div class="text-center"  th:each="con : ${friends}" >
+                        <tr>
+                            <td>
+                                <a th:text="${con.profilename}" th:href="@{/profile/{name}(name=${con.profilename})}">Nimi</a>
+                                <form method="POST" th:action="@{'/accound/connect/delete/'+${con.profilename}}" th:if="${own == true}">
+                                    <input type="submit"  value="delete!"/>
+                                </form>
+                            </td>
+                        </tr>
+                    </div> 
+                </tbody>
+            </table>
+
         </div>
-        
+
         <br/>
-        
+
         <div class="text-center" th:if="${own == true}">
-        <h3>Add new skills</h3>
-        <form method="POST" th:action="@{/account/skills}">
-            Skill name<br/>
-            <input type="text" name="headline"/>
-            
-            <br/>
-            Describtion<br/>
-            <input type="text" name="desc"/>
-            
-            <br/>
-            <input type="submit" value="Add new skill!"/>
-        </form>
+            <h3>Add new skills</h3>
+            <form method="POST" th:action="@{/account/skills}">
+                Skill name<br/>
+                <input type="text" name="headline"/>
+
+                <br/>
+                Describtion<br/>
+                <input type="text" name="desc"/>
+
+                <br/>
+                <input type="submit" value="Add new skill!"/>
+            </form>
         </div>
-        
+
         <h3 class="container text-center">Skills</h3>
         <div class="container text-center" th:each="skill,iter : ${skills}">
-            
+
             <div th:if="${iter.index < 3}">
-            
-            <div class="card">
-                <div class="card-body">
-            <h5 th:text="${skill.headline}" >d</h5>
-            <span  th:text="${skill.description}">d</span>
-            <span th:text="${skill.vote}">like</span>
-            <form method="POST" th:action="@{'/skill/vote/'+${skill.id}}">
-                 <input type="submit" value="Endorse!"/>
-            </form>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 th:text="${skill.headline}" >d</h5>
+                        <span  th:text="${skill.description}">d</span>
+                        <span th:text="${skill.vote}">like</span>
+                        <form method="POST" th:action="@{'/skill/vote/'+${skill.id}}">
+                            <input type="submit" value="Endorse!"/>
+                        </form>
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
-            
+
             <div th:if="${iter.index >= 3}">
                 <h5 th:text="${skill.headline}" >d</h5>
                 <p  th:text="${skill.description}">d</p>
                 <p th:text="${skill.vote}">like</p>
                 <form method="POST" th:action="@{'/skill/vote/'+${skill.id}}">
-                     <input type="submit" value="Endorse!"/>
+                    <input type="submit" value="Endorse!"/>
                 </form>
             </div>
         </div>

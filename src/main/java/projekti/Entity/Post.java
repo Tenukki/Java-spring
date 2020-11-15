@@ -32,11 +32,11 @@ public class Post extends AbstractPersistable<Long>{
     @ManyToOne
     private Account sender;
     
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Comment> comments = new ArrayList<>();
     
     //Tässä vika kun käyttäjä ei voi liketa 
-   @ManyToMany(cascade = CascadeType.ALL)
+   @ManyToMany
     private List<Account> likers = new ArrayList<>();
     
     @NotEmpty

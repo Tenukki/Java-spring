@@ -5,45 +5,45 @@
         <title>register</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-        
+
     </head>
     <body>
 
-        
-        <div style="margin-top: 100px;margin-left: 20%;margin-right: 20%;">
-        <h2>Register</h2>
-        <form method="POST" th:action="@{/accounts}">
-            <div class="form-group">
-            Username<br/>
-            <input type="text" class="form-control" name="username"/>
-            </div>
-            
-            <div class="form-group">
-            Profilename<br/>
-            <input type="text" name="profilename" class="form-control"/>
-            </div>
-            
-            
-            <div class="form-group">
-            Realname<br/>
-            <input type="text" name="realname" class="form-control"/>
-            </div>
-           
-            <div class="form-group">
-            Password<br/>
-            <input type="password" name="password" class="form-control"/>
-            </div>
 
-            <input type="submit" value="Add new account!"/>
-        </form>
-            </div>
-        
-        <div style="margin-top: 50px;margin-left: 40%;margin-right: 40%;">
-        <h2>Login</h2>
-        <form method="GET" th:action="@{/login}">
-            <button  type="submit" class="btn btn-primary">Go to login</button>
-        </form>
+        <div style="margin-top: 100px;margin-left: 20%;margin-right: 20%;">
+            <h2>Register</h2>
+            <form method="POST" th:action="@{/accounts}">
+                <div class="form-group">
+                    Username<br/>
+                    <input type="text" class="form-control" name="username"/>
+                </div>
+
+                <div class="form-group">
+                    Profilename<br/>
+                    <input type="text" name="profilename" class="form-control"/>
+                </div>
+
+
+                <div class="form-group">
+                    Realname<br/>
+                    <input type="text" name="realname" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    Password<br/>
+                    <input type="password" name="password" class="form-control"/>
+                </div>
+
+                <input type="submit" value="Add new account!"/>
+            </form>
         </div>
-        
+
+        <div style="margin-top: 50px;margin-left: 40%;margin-right: 40%;">
+            <h2>Login</h2>
+            <form method="GET" th:action="@{/login}">
+                <button  type="submit" class="btn btn-primary">Go to login</button>
+            </form>
+        </div>
+
     </body>
 </html>

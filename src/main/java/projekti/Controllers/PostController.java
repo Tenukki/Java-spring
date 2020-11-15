@@ -56,7 +56,7 @@ public class PostController {
     PostRepo postRepo;
     
     @GetMapping("/post")
-    public String post(Model model){
+    public String getPosts(Model model){
         Account account = accountService.getCurrentUser();
         List<Account> users = accountService.getAllFriends(account.getProfilename());
         users.add(account);
@@ -118,7 +118,7 @@ public class PostController {
     
     
     @PostMapping("/post/like/{id}")
-    public String like(@PathVariable Long id){
+    public String likePost(@PathVariable Long id){
         Post post = postRepo.getOne(id);
         Account myAccount = accountService.getCurrentUser();
         if(post.getLikers().contains(myAccount)){

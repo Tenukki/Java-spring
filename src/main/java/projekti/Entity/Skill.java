@@ -39,7 +39,7 @@ public class Skill extends AbstractPersistable<Long> {
     @ManyToOne
     private Account account;
     
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     private List<Account> likers;
    
     

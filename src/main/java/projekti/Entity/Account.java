@@ -34,14 +34,15 @@ public class Account extends AbstractPersistable<Long> {
     @NotEmpty
     private String password;
     
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Skill> skills = new ArrayList<>();
     
-    @Type(type = "org.hibernate.type.BinaryType")
+    //@Type(type = "org.hibernate.type.BinaryType")
+    @Lob
     private byte[] content = null;
     
     //Tässä vika
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     private List<Post> liked = new ArrayList<>();
     
     @OneToMany

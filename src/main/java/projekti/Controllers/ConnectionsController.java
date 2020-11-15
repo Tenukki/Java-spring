@@ -51,7 +51,7 @@ public class ConnectionsController {
     
     //profiiline looppaus tällä
     @GetMapping("/connect")
-    public String index2(Model model) {
+    public String getConnect(Model model) {
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
@@ -65,7 +65,7 @@ public class ConnectionsController {
     }
     
     @PostMapping("/connect/find")
-    public String addd(Model model,@RequestParam String name) {
+    public String findUser(Model model,@RequestParam String name) {
         
          Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
@@ -102,7 +102,7 @@ public class ConnectionsController {
     
     //hyväksy
     @PostMapping("/accound/connect/accept/{asking}")
-    public String responseConnection(@PathVariable String asking) {
+    public String acceptConnection(@PathVariable String asking) {
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
@@ -117,7 +117,7 @@ public class ConnectionsController {
     
     //hylkää
     @PostMapping("/accound/connect/decline/{asking}")
-    public String responseConnection2(@PathVariable String asking) {
+    public String declineConnection(@PathVariable String asking) {
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
@@ -132,7 +132,7 @@ public class ConnectionsController {
     }
     
     @PostMapping("/accound/connect/delete/{friend}")
-    public String responseConnection3(@PathVariable String friend){
+    public String deleteConnection(@PathVariable String friend){
        // connectionRepository.deleteById(id);
         System.out.println("DELETE " +friend );
         accountService.deleteFriend(friend);

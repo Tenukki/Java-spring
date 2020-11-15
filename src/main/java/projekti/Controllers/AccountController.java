@@ -56,7 +56,7 @@ public class AccountController {
     }
 
     @PostMapping("/accounts")
-    public String add(@RequestParam String username, @RequestParam String password,
+    public String newUser(@RequestParam String username, @RequestParam String password,
             @RequestParam String profilename,@RequestParam String realname) {
         if (accountRepository.findByUsername(username) != null) {
             return "redirect:/";
@@ -75,7 +75,7 @@ public class AccountController {
     
     //Luo uusi skill
     @PostMapping("/account/skills")
-    public String addd(@RequestParam String headline, @RequestParam String desc) {
+    public String addSkill(@RequestParam String headline, @RequestParam String desc) {
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
